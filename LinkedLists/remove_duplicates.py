@@ -1,14 +1,15 @@
 from linkedlist import LinkedList
 
 def dupRemove(n):
-    d={n.value:1}
+    d = {}
     current = n
     while current.next is not None:
         if current.next.value in d:
             current.next = current.next.next
         else:
-            d[current.value]=1
+            d[current.next.value] = 1
             current = current.next
+    return d
 
 
 l= LinkedList()

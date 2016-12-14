@@ -14,10 +14,11 @@ class LinkedList(object):
 
         if self.start is None:
             self.start = n
-            self.length=self.length+1
+
         else:
             self.end.next = n
-            self.length=self.length+1
+
+        self.length=self.length+1
         self.end = n
 
     def getN(self,i):
