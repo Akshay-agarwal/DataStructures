@@ -1,29 +1,20 @@
-def binarySearch(arr,key):
-
-    low = 0;
-    high = len(arr)-1
-
+def BsRec(arr,key,low,high):
     if low > high:
-        return -1
+        return "Key not found"
 
+    else:
+        mid = (low+high)//2
+        if arr[mid] == key:
+            return "Key found at "+str(mid+1)
 
-    mid = round((low+high)/2)
-
-    while(low == high):
-        if  arr[mid] == key:
-            return "Element found at position: "+str(mid+1)
-
-        elif(arr[mid] > key):
-            high = mid
-            mid = round((low+high)/2)
-
+        elif arr[mid]<key:
+            return BsRec(arr,key,mid+1,high)
 
         else:
-            low = mid
-            mid = round((low+high)/2)
+            return BsRec(arr,key,low,mid-1)
 
+def Bs(arr,key):
+    return BsRec(arr,key,0,len(arr)-1)
 
-    return "Element no found"
+print(Bs([1,2,3,4,6,8,9,11,12,34,55,66,77,88,91,92,94,99,111,112,113,115,118,1192,13233,34546,6575676],10))
 
-b = binarySearch([1,2,3,4,5,6,7,8,9,11,14,16,17,19,25,26,65,74,85,88],95)
-print(b)
